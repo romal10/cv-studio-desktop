@@ -2,6 +2,8 @@
 
 **Download page: https://romal10.github.io/cv-studio-desktop/**
 
+**All apps (desktop app + online version side by side): https://romal10.github.io/cv-studio-desktop/hub/**
+
 Public download page for **CV Studio**. The application source code is **private**; this repository only hosts the download information, the licence and release files.
 
 ## What you get
