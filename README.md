@@ -9,7 +9,7 @@ Public download page for **CV Studio**. The application source code is **private
 - **Managed installs.** Your organisation's administrator can see which devices have the app and can block access if something happens.
 
 ## Download
-**Latest: [v0.1.0 (pre-release)](../../releases/latest)**
+**Latest: [v0.1.0 (pre-release)](../../releases/tag/v0.1.0)**
 
 | Device | File |
 |---|---|
