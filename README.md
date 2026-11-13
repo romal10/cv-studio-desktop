@@ -8,14 +8,22 @@ Public download page for **CV Studio**. The application source code is **private
 - **Local AI helper.** The app checks and sets up a local AI (Ollama) on your computer — no API key, text stays on the device.
 - **Managed installs.** Your organisation's administrator can see which devices have the app and can block access if something happens.
 
-## Install
-| Device | How |
-|---|---|
-| **Mac / Windows** | Desktop installers (`.dmg` / `.exe`) are attached to each [Release](../../releases) once a signed build is published. |
-| **iPad / iPhone** | Open CV Studio in Safari → Share → *Add to Home Screen*. |
-| **Windows / Mac / Android (browser)** | Open CV Studio in Chrome or Edge → *Install app* (address bar). |
+## Download
+**Latest: [v0.1.0 (pre-release)](../../releases/latest)**
 
-> There is no signed desktop release yet, so there is nothing to download here today. Use the installable web app above until the first release is published.
+| Device | File |
+|---|---|
+| **Mac** (Intel; runs on Apple Silicon via Rosetta) | `CV-Studio-0.1.0-mac.dmg` (or the `.zip`) |
+| **Windows 10/11, 64-bit** | `CV-Studio-Setup-0.1.0-windows.exe` |
+| **iPad / iPhone** | Open CV Studio in Safari → Share → *Add to Home Screen* |
+| **Android / other browsers** | Open CV Studio in Chrome or Edge → *Install app* |
+
+Check your download against `SHA256SUMS.txt` on the release page.
+
+### First launch — these builds are not signed yet
+- **Mac:** open the `.dmg`, drag *CV Studio* to Applications, then **right-click the app → Open → Open**. If macOS still blocks it: System Settings → Privacy & Security → *Open Anyway*.
+- **Windows:** SmartScreen shows "Windows protected your PC" → **More info → Run anyway**.
+- The Windows installer has not been tested on a wide range of PCs yet. Please report problems via Issues.
 
 ## Privacy
 Your CV is stored on your device unless you choose to put it online. The app reports to your administrator: device name, system, app version, local-AI status and basic activity (for example "app started", "CV put online"). It does not send your CV content for this.
