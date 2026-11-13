@@ -5,64 +5,320 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CV Studio Desktop — Download</title>
 <meta name="description" content="CV Studio für Mac und Windows herunterladen. Funktioniert offline, dein CV bleibt auf deinem Gerät.">
+<meta property="og:title" content="CV Studio für den Desktop">
+<meta property="og:description" content="Funktioniert auch ohne Internet. Für Windows und Mac (Apple-Chip und Intel).">
+<meta property="og:image" content="https://romal10.github.io/cv-studio-desktop/img/app-desktop.jpg">
+<link rel="icon" href="img/logo.png">
 <style>
-  :root { --bg:#070d22; --card:#0f1733; --ink:#f1f5ff; --soft:#9aa8cc; --line:#1f2b52; --acc:#4f6bff; --acc2:#7c3aed; }
+  :root { --bg:#070d22; --card:#0f1733; --card2:#131d40; --ink:#f1f5ff; --soft:#9aa8cc; --line:#1f2b52; --acc:#4f6bff; --acc2:#7c3aed; --gold:#fbbf24; }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
-  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 8px 0 12px; }
-  .grad { background: linear-gradient(90deg,#60a5fa,#a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  p.lead { color: var(--soft); font-size: 1.1rem; margin: 0 0 28px; }
-  .btn { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; border-radius:16px; text-decoration:none; color:#fff; font-weight:700;
-         background: linear-gradient(90deg,var(--acc),var(--acc2)); margin: 10px 0; min-height: 56px; }
-  .btn small { font-weight:500; opacity:.85; }
-  .btn.alt { background: var(--card); border:1px solid var(--line); }
-  .rec { outline: 3px solid #fbbf24; outline-offset: 2px; }
-  .badge { font-size:.7rem; background:#fbbf24; color:#1b1400; padding:2px 8px; border-radius:999px; margin-left:8px; }
-  section { background: var(--card); border:1px solid var(--line); border-radius:20px; padding: 20px; margin-top: 28px; }
-  h2 { font-size: 1.1rem; margin: 0 0 8px; }
-  ol, ul { color: var(--soft); padding-left: 1.2rem; margin: 6px 0; }
-  code { background:#000a; padding:1px 6px; border-radius:6px; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background: radial-gradient(1200px 600px at 70% -10%, #1a2561 0%, transparent 60%), var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
   a { color:#93b4ff; }
-  footer { color: var(--soft); font-size:.85rem; margin-top: 32px; }
+  nav { display:flex; align-items:center; justify-content:space-between; padding: 18px 0; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.01em; color:var(--ink); text-decoration:none; }
+  .brand img { width:34px; height:34px; border-radius:9px; }
+  nav .links a { color:var(--soft); text-decoration:none; font-size:.92rem; margin-left:18px; }
+  nav .links a:hover { color:#fff; }
+
+  /* hero */
+  .hero { display:grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items:center; padding: 28px 0 56px; }
+  h1 { font-size: clamp(2.2rem, 5.4vw, 3.6rem); line-height:1.05; margin: 0 0 14px; letter-spacing:-.02em; }
+  .grad { background: linear-gradient(90deg,#60a5fa,#a78bfa); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .lead { color:var(--soft); font-size:1.12rem; margin:0 0 22px; max-width: 34em; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin: 0 0 26px; padding:0; list-style:none; }
+  .chips li { font-size:.85rem; color:#c9d4f5; background:#ffffff0d; border:1px solid var(--line); padding:5px 12px; border-radius:999px; }
+  .cta { display:inline-block; background: linear-gradient(90deg,var(--acc),var(--acc2)); color:#fff; text-decoration:none; font-weight:700; padding: 14px 24px; border-radius:14px; box-shadow:0 10px 30px #4f6bff55; }
+  .cta2 { display:inline-block; color:#c9d4f5; text-decoration:none; padding:14px 18px; font-weight:600; }
+
+  /* device mock */
+  .stage { position:relative; padding: 0 0 36px; }
+  .win { border-radius:14px; overflow:hidden; background:#0b1230; border:1px solid #2a3a73; box-shadow: 0 30px 80px #000a, 0 0 0 1px #ffffff08; }
+  .win .bar { display:flex; align-items:center; gap:7px; padding:10px 14px; background:#0e1738; border-bottom:1px solid var(--line); }
+  .win .bar i { width:11px; height:11px; border-radius:50%; background:#ff5f57; display:block; }
+  .win .bar i:nth-child(2){ background:#febc2e; } .win .bar i:nth-child(3){ background:#28c840; }
+  .win .bar span { margin: 0 auto; font-size:.75rem; color:var(--soft); transform: translateX(-24px); }
+  .win img { display:block; width:100%; height:auto; }
+  .phone { position:absolute; right:-10px; bottom:0; width: 29%; border-radius:22px; border:5px solid #1b2552; overflow:hidden; background:#0b1230; box-shadow:0 24px 60px #000b; }
+  .phone img { display:block; width:100%; height:auto; }
+
+  /* downloads */
+  h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); letter-spacing:-.015em; margin: 0 0 8px; }
+  .sub { color:var(--soft); margin:0 0 26px; }
+  section { padding: 44px 0; }
+  .dl { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { display:flex; flex-direction:column; gap:10px; text-decoration:none; color:#fff; padding: 22px; border-radius:20px; background: linear-gradient(135deg,var(--acc),var(--acc2)); box-shadow: 0 14px 40px #4f6bff40; border:1px solid #ffffff22; transition: transform .15s, box-shadow .15s; position:relative; min-height: 210px; }
+  .card:hover, .card:focus-visible { transform: translateY(-3px); box-shadow: 0 20px 50px #4f6bff70; outline: none; }
+  .card.rec { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .card svg.os { width:44px; height:44px; }
+  .card h3 { margin:6px 0 0; font-size:1.2rem; line-height:1.2; }
+  .card .meta { font-size:.88rem; opacity:.9; margin:0; }
+  .card .req { font-size:.8rem; opacity:.8; margin:0; }
+  .card .go { margin-top:auto; display:flex; align-items:center; justify-content:space-between; background:#ffffff26; border-radius:12px; padding: 11px 14px; font-weight:700; }
+  .badge { position:absolute; top:14px; right:14px; font-size:.7rem; background:var(--gold); color:#1b1400; padding:3px 10px; border-radius:999px; font-weight:700; }
+  .note { margin-top:18px; display:flex; gap:14px; align-items:flex-start; background: var(--card); border:1px solid var(--line); border-radius:16px; padding: 14px 18px; color:var(--soft); font-size:.95rem; }
+  .note b { color:var(--ink); }
+
+  /* chip finder */
+  .finder { display:grid; grid-template-columns: 330px 1fr; gap: 26px; align-items:center; background: var(--card); border:1px solid var(--line); border-radius:22px; padding: 26px; margin-top: 26px; }
+  .about { background: #ececf1; color:#222; border-radius:14px; padding: 18px 20px; font-size:.86rem; box-shadow:0 20px 50px #0008; }
+  .about .t { text-align:center; font-weight:700; font-size:1.05rem; margin-bottom:10px; }
+  .about dl { display:grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin:0; }
+  .about dt { color:#777; text-align:right; } .about dd { margin:0; font-weight:600; }
+  .about .hl { outline:2px solid #e11d48; outline-offset:2px; border-radius:4px; }
+  .finder ul { margin: 8px 0 0; padding:0; list-style:none; }
+  .finder li { margin: 10px 0; padding-left: 0; color:var(--soft); }
+  .finder li b { color:var(--ink); }
+  .pill { display:inline-block; font-size:.78rem; font-weight:700; padding:2px 10px; border-radius:999px; background:#ffffff14; border:1px solid var(--line); color:#fff; margin-right:6px; }
+
+  /* steps */
+  .steps { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:16px; counter-reset: s; }
+  .step { background: var(--card); border:1px solid var(--line); border-radius:20px; padding: 20px; counter-increment: s; }
+  .step::before { content: counter(s); display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background: linear-gradient(135deg,var(--acc),var(--acc2)); font-weight:800; font-size:.85rem; margin-bottom: 10px; }
+  .step h3 { margin:0 0 6px; font-size:1.05rem; }
+  .step p { margin:0 0 14px; color:var(--soft); font-size:.93rem; }
+  .art { background:#0a1128; border:1px solid var(--line); border-radius:12px; padding: 14px; min-height:132px; display:flex; align-items:center; justify-content:center; }
+  /* dmg art */
+  .dmg { display:flex; align-items:center; gap: 14px; }
+  .ico { width:58px; height:58px; border-radius:14px; background: linear-gradient(135deg,var(--acc),var(--acc2)); display:grid; place-items:center; font-weight:800; font-size:.8rem; }
+  .fold { width:58px; height:58px; border-radius:12px; background:#3b82f6aa; border:1px solid #60a5fa; display:grid; place-items:center; font-size:.62rem; text-align:center; line-height:1.15; }
+  .arrow { color:var(--soft); font-size:1.4rem; }
+  /* context menu art */
+  .ctx { width: 170px; background:#2b2d3a; border:1px solid #444a63; border-radius:10px; padding:5px; font-size:.8rem; box-shadow:0 14px 30px #000a; }
+  .ctx div { padding:4px 10px; border-radius:6px; color:#cfd6f2; }
+  .ctx .on { background:#3b82f6; color:#fff; font-weight:700; }
+  /* dialog art */
+  .dlg { width: 100%; max-width: 230px; background:#2b2d3a; border:1px solid #444a63; border-radius:12px; padding: 12px 14px; text-align:center; font-size:.76rem; color:#cfd6f2; box-shadow:0 14px 30px #000a; }
+  .dlg b { display:block; color:#fff; margin-bottom:4px; font-size:.82rem; }
+  .dlg .row { display:flex; gap:8px; justify-content:center; margin-top:10px; }
+  .dlg .row span { padding:4px 12px; border-radius:7px; background:#444a63; }
+  .dlg .row span.on { background:#3b82f6; color:#fff; font-weight:700; }
+
+  .dlg .row span.no { background:#444a63; opacity:.55; }
+  .dlg .row span.ring { outline:2px solid #fbbf24; outline-offset:2px; }
+  .set { width:100%; max-width:240px; background:#2b2d3a; border:1px solid #444a63; border-radius:12px; padding:10px 12px; font-size:.72rem; color:#cfd6f2; box-shadow:0 14px 30px #000a; }
+  .set .h { color:#8f98b8; font-size:.66rem; text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px; }
+  .set .r { display:flex; justify-content:space-between; align-items:center; gap:8px; background:#1f2130; border-radius:8px; padding:7px 9px; }
+  .set .r span.b { background:#3b82f6; color:#fff; font-weight:700; padding:3px 9px; border-radius:7px; white-space:nowrap; outline:2px solid #fbbf24; outline-offset:2px; }
+  pre.cmd { margin: 8px 0 0; background:#050a1c; border:1px solid var(--line); border-radius:12px; padding:12px 14px; white-space:pre-wrap; word-break:break-all; color:#c9e3ff; font-size:.85rem; }
+  .ver { display:inline-block; font-size:.75rem; font-weight:700; padding:2px 10px; border-radius:999px; background:#fbbf2426; color:#fbbf24; border:1px solid #fbbf2455; margin-left:6px; vertical-align:middle; }
+
+  /* gallery */
+  .shots { display:grid; grid-template-columns: 1.6fr 1fr; gap: 16px; align-items:start; }
+  .shot { margin:0; }
+  .shot figcaption { color:var(--soft); font-size:.9rem; margin-top:10px; }
+  .shot figcaption b { color:var(--ink); }
+  .shot .win { box-shadow: 0 20px 50px #0009; }
+  .shot .ph { border-radius:22px; border:5px solid #1b2552; overflow:hidden; max-width: 260px; margin: 0 auto; }
+  .shot .ph img { display:block; width:100%; }
+  .feat { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top: 26px; }
+  .feat div { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px; }
+  .feat h3 { margin: 0 0 4px; font-size:1rem; } .feat p { margin:0; color:var(--soft); font-size:.92rem; }
+  .box { background: var(--card); border:1px solid var(--line); border-radius:20px; padding: 22px; }
+  .box ul { color:var(--soft); padding-left:1.2rem; margin: 6px 0 0; } .box li { margin: 6px 0; }
+  .box b { color: var(--ink); }
+  .two { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+  .two > *, .dl > *, .steps > *, .finder > * { min-width:0; }
+  footer { color:var(--soft); font-size:.85rem; padding: 18px 0 56px; border-top:1px solid var(--line); margin-top: 24px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 8px; }
+    .dl, .steps, .feat, .two { grid-template-columns: 1fr; }
+    .finder { grid-template-columns: 1fr; }
+    .shots { grid-template-columns: 1fr; }
+    .card { min-height: 0; }
+    .phone { width: 28%; right: 4px; }
+    nav .links { display:none; }
+  }
+  @media (prefers-reduced-motion: reduce) { html{scroll-behavior:auto} .card{transition:none} }
 </style>
 </head>
 <body>
-<main>
-  <h1>CV Studio <span class="grad">für den Desktop</span></h1>
-  <p class="lead">Funktioniert auch ohne Internet. Dein CV bleibt auf deinem Gerät, bis du ihn online stellst.</p>
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#top"><img src="img/logo.png" alt=""> CV Studio</a>
+    <div class="links"><a href="#download">Download</a><a href="#install">Installation</a><a href="#screens">Screenshots</a><a href="#mobile">Handy &amp; Tablet</a></div>
+  </nav>
 
-  <a class="btn" id="win" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-Setup-0.1.0-windows.exe">
-    <span>Für Windows 10/11 herunterladen <small>· 64-Bit · 97 MB</small></span><span>⬇</span></a>
-  <a class="btn" id="macarm" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-0.1.0-mac-apple-silicon.dmg">
-    <span>Für Mac mit Apple-Chip (M1–M4) <small>· 112 MB</small></span><span>⬇</span></a>
-  <a class="btn alt" id="macintel" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-0.1.0-mac-intel.dmg">
-    <span>Für Mac mit Intel-Chip <small>· 117 MB</small></span><span>⬇</span></a>
-  <p style="color:var(--soft);font-size:.9rem;margin:4px 2px">Welcher Mac? Apple-Menü  → „Über diesen Mac“ → Zeile „Chip“.</p>
+  <header class="hero" id="top">
+    <div>
+      <h1>CV Studio <span class="grad">für den Desktop</span></h1>
+      <p class="lead">Funktioniert auch ohne Internet. Dein CV bleibt auf deinem Gerät, bis du ihn online stellst.</p>
+      <ul class="chips">
+        <li>Offline nutzbar</li><li>Daten bleiben lokal</li><li>Lokale KI (Ollama)</li><li>Windows &amp; Mac</li>
+      </ul>
+      <a class="cta" href="#download">Jetzt herunterladen</a>
+      <a class="cta2" href="#install">So installierst du es →</a>
+    </div>
+    <div class="stage">
+      <div class="win">
+        <div class="bar"><i></i><i></i><i></i><span>CV Studio</span></div>
+        <img src="img/app-desktop.jpg" alt="CV Studio Startseite auf dem Desktop" width="1280" height="800">
+      </div>
+      <div class="phone"><img src="img/app-phone.jpg" alt="CV Studio auf dem Handy" width="780" height="1688"></div>
+    </div>
+  </header>
 
-  <section>
-    <h2>Beim ersten Start erscheint eine Sicherheitswarnung</h2>
-    <p style="color:var(--soft);margin:0 0 8px">Die App ist noch nicht von Microsoft/Apple signiert. Das ist normal für neue Apps:</p>
-    <ul>
-      <li><b>Windows:</b> „Weitere Informationen“ → <b>Trotzdem ausführen</b>.</li>
-      <li><b>Mac:</b> Rechtsklick auf die App → <b>Öffnen</b> → Öffnen. Falls blockiert: Systemeinstellungen → Datenschutz &amp; Sicherheit → <b>Trotzdem öffnen</b>.</li>
-    </ul>
+  <section id="download" style="padding-top:8px">
+    <h2>Wähle deine Version</h2>
+    <p class="sub">Drei Downloads, alle gleichwertig. Such dir den passenden aus.</p>
+    <div class="dl">
+      <a class="card" id="win" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-Setup-0.1.0-windows.exe">
+        <svg class="os" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3V5.5Zm8.6-1.2L21 3v8.5h-9.4V4.3ZM3 12.5h7.5v7.1L3 18.5v-6Zm8.6 0H21V21l-9.4-1.3v-7.2Z"/></svg>
+        <h3>Windows 10 / 11</h3>
+        <p class="meta">64-Bit · 97 MB · .exe</p>
+        <p class="req">Für alle PCs und Laptops mit Windows</p>
+        <span class="go"><span>Herunterladen</span><span>⬇</span></span>
+      </a>
+      <a class="card" id="macarm" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-0.1.0-mac-apple-silicon.dmg">
+        <svg class="os" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.700-2.900-1.900-3.500-1.900-1.500-.2-2.900.9-3.700.9s-1.900-.9-3.200-.8c-1.600 0-3.100.9-4 2.400-1.700 3-.4 7.400 1.200 9.800.8 1.200 1.800 2.500 3 2.400 1.200 0 1.700-.8 3.100-.8s1.900.8 3.200.8c1.300 0 2.100-1.200 2.900-2.400.9-1.400 1.300-2.700 1.300-2.800 0 0-2.400-.9-2.400-3.900ZM14 5.300c.7-.8 1.100-1.900 1-3-.9 0-2.100.6-2.800 1.400-.6.700-1.100 1.800-1 2.900 1 .1 2.100-.5 2.800-1.300Z"/></svg>
+        <h3>Mac mit Apple-Chip</h3>
+        <p class="meta">M1, M2, M3, M4 · 112 MB · .dmg</p>
+        <p class="req">Benötigt macOS 11 oder neuer</p>
+        <span class="go"><span>Herunterladen</span><span>⬇</span></span>
+      </a>
+      <a class="card" id="macintel" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-0.1.0-mac-intel.dmg">
+        <svg class="os" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.5 2.1-3.6-1.1-1.700-2.900-1.900-3.500-1.900-1.500-.2-2.900.9-3.700.9s-1.900-.9-3.200-.8c-1.600 0-3.100.9-4 2.400-1.700 3-.4 7.400 1.200 9.800.8 1.200 1.800 2.500 3 2.400 1.200 0 1.700-.8 3.100-.8s1.900.8 3.200.8c1.300 0 2.100-1.200 2.900-2.400.9-1.400 1.300-2.700 1.300-2.800 0 0-2.400-.9-2.400-3.900ZM14 5.300c.7-.8 1.100-1.900 1-3-.9 0-2.100.6-2.800 1.400-.6.700-1.100 1.800-1 2.900 1 .1 2.100-.5 2.800-1.300Z"/></svg>
+        <h3>Mac mit Intel-Chip</h3>
+        <p class="meta">Ältere Macs · 117 MB · .dmg</p>
+        <p class="req">Benötigt macOS 11 oder neuer</p>
+        <span class="go"><span>Herunterladen</span><span>⬇</span></span>
+      </a>
+    </div>
+    <div class="note"><span aria-hidden="true">💡</span><div><b>Du hast einen Mac und bist unsicher?</b> Prüfe dein Modell in 10 Sekunden unten bei „Welchen Chip hat mein Mac?“. Mit dem falschen Download startet die App nicht, es passiert aber nichts Schlimmes.</div></div>
+
+    <div class="finder" id="chip">
+      <div class="about" aria-hidden="true">
+        <div class="t">Über diesen Mac</div>
+        <dl>
+          <dt>Modell</dt><dd>MacBook Pro (14 Zoll, 2023)</dd>
+          <dt>Chip</dt><dd class="hl">Apple M3 Pro</dd>
+          <dt>Speicher</dt><dd>18 GB</dd>
+          <dt>macOS</dt><dd class="hl">Sonoma 14.5</dd>
+        </dl>
+      </div>
+      <div>
+        <h2 style="font-size:1.3rem">Welchen Chip hat mein Mac?</h2>
+        <ul>
+          <li>Klicke oben links auf das <b>Apple-Menü  → „Über diesen Mac“</b>.</li>
+          <li>Steht bei <b>„Chip“</b> <i>Apple M1, M2, M3 oder M4</i> → <span class="pill">Apple-Chip</span> nimm die mittlere Karte.</li>
+          <li>Steht dort <b>„Prozessor“</b> mit <i>Intel Core …</i> → <span class="pill">Intel</span> nimm die rechte Karte.</li>
+          <li>Prüfe auch die <b>macOS-Version</b>: Die App braucht <b>macOS 11 (Big Sur) oder neuer</b>. Ist deine Version älter, sieh bei „Ältere Macs“ weiter unten nach.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>iPad, iPhone, Android</h2>
-    <p style="color:var(--soft);margin:0">Öffne CV Studio im Browser und installiere es als App: iPad/iPhone in Safari über Teilen → <i>Zum Home-Bildschirm</i>, Android in Chrome über <i>App installieren</i>.</p>
+  <section id="install">
+    <h2>Installation auf dem Mac</h2>
+    <p class="sub">Die App ist noch nicht von Apple geprüft. Deshalb zeigt macOS beim ersten Start eine Warnung. Das ist normal und lässt sich einmalig freigeben. Unter Windows läuft der Installer von selbst durch.</p>
+    <h3 style="margin:0 0 12px;font-size:1.05rem">macOS 15 Sequoia und neuer <span class="ver">Anleitung für die Warnung „nicht geöffnet“</span></h3>
+    <div class="steps">
+      <div class="step">
+        <h3>.dmg öffnen und verschieben</h3>
+        <p>Doppelklick auf die Datei. Ziehe <b>CV Studio</b> in den Ordner <b>Programme</b>.</p>
+        <div class="art"><div class="dmg"><div class="ico">CV</div><span class="arrow">➜</span><div class="fold">Pro&shy;gramme</div></div></div>
+      </div>
+      <div class="step">
+        <h3>App einmal öffnen</h3>
+        <p>Es erscheint „CV Studio nicht geöffnet“. Klicke auf <b>Fertig</b>. <b>Nicht</b> auf „In den Papierkorb legen“.</p>
+        <div class="art"><div class="dlg"><b>„CV Studio“ nicht geöffnet</b>Apple konnte nicht überprüfen, ob die App frei von Schadsoftware ist.<div class="row" style="flex-direction:column"><span class="no">In den Papierkorb legen</span><span class="on ring">Fertig</span></div></div></div>
+      </div>
+      <div class="step">
+        <h3>In den Systemeinstellungen freigeben</h3>
+        <p>Öffne <b>Systemeinstellungen → Datenschutz &amp; Sicherheit</b>, scrolle nach unten zu „Sicherheit“ und klicke <b>Trotzdem öffnen</b>.</p>
+        <div class="art"><div class="set"><div class="h">Sicherheit</div><div class="r"><span>„CV Studio“ wurde blockiert</span><span class="b">Trotzdem öffnen</span></div></div></div>
+      </div>
+      <div class="step">
+        <h3>Mit Touch ID oder Passwort bestätigen</h3>
+        <p>Bestätige mit deinem Mac-Passwort oder Touch ID und klicke dann auf <b>Öffnen</b>. Ab jetzt startet CV Studio ganz normal.</p>
+        <div class="art"><div class="dlg"><b>„CV Studio“ öffnen?</b>Du kannst die App jetzt öffnen.<div class="row"><span>Abbrechen</span><span class="on ring">Öffnen</span></div></div></div>
+      </div>
+    </div>
+
+    <div class="two" style="margin-top:16px">
+      <div class="box">
+        <h2 style="font-size:1.1rem">Die Schnellvariante per Terminal</h2>
+        <p style="color:var(--soft);margin:0">Wenn dir die Systemeinstellungen zu umständlich sind, kopiere diese Zeile ins Programm <b>Terminal</b> und drücke Enter. Danach öffnet sich die App ohne Warnung:</p>
+        <pre class="cmd">xattr -dr com.apple.quarantine "/Applications/CV Studio.app"</pre>
+        <p style="color:var(--soft);margin:8px 0 0;font-size:.88rem">Das entfernt nur die Markierung „aus dem Internet geladen“ von dieser einen App.</p>
+      </div>
+      <div class="box">
+        <h2 style="font-size:1.1rem">Ich habe „In den Papierkorb legen“ geklickt</h2>
+        <p style="color:var(--soft);margin:0">Kein Problem. Hol die App aus dem Papierkorb zurück oder öffne die <code>.dmg</code> noch einmal und ziehe CV Studio erneut in „Programme“. Danach weiter mit Schritt 2.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:26px 0 12px;font-size:1.05rem">macOS 14 Sonoma und älter <span class="ver">einfacher</span></h3>
+    <div class="box"><ul style="margin:0">
+      <li>Rechtsklick auf die App in „Programme“ → <b>Öffnen</b> → im Fenster noch einmal <b>Öffnen</b>.</li>
+      <li>Die Systemeinstellungen sind hier nur nötig, wenn das Fenster keinen „Öffnen“-Knopf zeigt: <b>Datenschutz &amp; Sicherheit → Trotzdem öffnen</b>.</li>
+    </ul></div>
+
+    <div class="two" style="margin-top:16px">
+      <div class="box">
+        <h2 style="font-size:1.1rem">Windows: Warnung beim ersten Start</h2>
+        <ul>
+          <li>„Der Computer wurde durch Windows geschützt“ → <b>Weitere Informationen</b> → <b>Trotzdem ausführen</b>.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2 style="font-size:1.1rem">Meldung „nicht für diese macOS-Version“?</h2>
+        <p style="color:var(--soft);margin:0 0 6px">Dann ist dein macOS älter als 11 (Big Sur):</p>
+        <ul>
+          <li><b>macOS aktualisieren</b> unter Systemeinstellungen → Softwareupdate, falls dein Mac es zulässt.</li>
+          <li><b>Im Browser nutzen:</b> CV Studio läuft in Safari und Chrome auf jedem Mac. Siehe „iPad, iPhone, Android“ weiter unten.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <h2>Das bekommst du</h2>
+    <p class="sub">Die Desktop-App ist CV Studio in einem eigenen Fenster mit eigenem Symbol im Dock oder in der Taskleiste.</p>
+    <div class="shots">
+      <figure class="shot">
+        <div class="win"><div class="bar"><i></i><i></i><i></i><span>CV Studio</span></div><img src="img/app-login.jpg" alt="Anmeldung mit Face ID, Touch ID oder Passwort" loading="lazy" width="1280" height="800"></div>
+        <figcaption><b>Anmelden</b> mit Face ID, Touch ID, Windows Hello, E-Mail oder Google.</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="ph"><img src="img/app-login-phone.jpg" alt="Anmeldung auf dem Handy" loading="lazy" width="780" height="1688"></div>
+        <figcaption style="text-align:center"><b>Gleiche Ansicht</b> auf Handy und Tablet.</figcaption>
+      </figure>
+    </div>
+    <div class="feat">
+      <div><h3>Offline arbeiten</h3><p>Die App öffnet auch ohne Internet. Du bearbeitest deinen CV unterwegs und im Zug.</p></div>
+      <div><h3>Du entscheidest, wo er liegt</h3><p>Nur auf diesem Gerät oder online. Die App zeigt immer, wo dein CV gerade ist.</p></div>
+      <div><h3>Lokale KI</h3><p>Die App richtet eine lokale KI (Ollama) ein. Kein API-Schlüssel nötig, Texte bleiben auf deinem Gerät.</p></div>
+    </div>
+  </section>
+
+  <section id="mobile" style="padding-top:8px">
+    <div class="box">
+      <h2 style="font-size:1.2rem">iPad, iPhone, Android und ältere Macs</h2>
+      <p style="color:var(--soft);margin:0 0 8px">Öffne CV Studio im Browser und installiere es als App. Du brauchst dafür keinen Download:</p>
+      <ul>
+        <li><b>iPad / iPhone:</b> in Safari auf Teilen tippen → <i>Zum Home-Bildschirm</i>.</li>
+        <li><b>Android:</b> in Chrome auf <i>App installieren</i> tippen.</li>
+        <li><b>Mac, Windows und Linux im Browser:</b> in Chrome oder Edge in der Adressleiste auf das Installieren-Symbol klicken.</li>
+      </ul>
+    </div>
   </section>
 
   <footer>
     Version 0.1.0 (Vorabversion) · Prüfsummen: <a href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/SHA256SUMS.txt">SHA256SUMS.txt</a> ·
     <a href="https://github.com/romal10/cv-studio-desktop/releases/tag/v0.1.0">Alle Dateien</a> · MIT-Lizenz (Download-Seite)
   </footer>
-</main>
+</div>
 <script>
-  // Highlight the likely match; never hide the others (Mac chip type cannot be detected reliably).
-  var ua = navigator.userAgent, id = /Windows/.test(ua) ? 'win' : /Macintosh|Mac OS X/.test(ua) && !/iPhone|iPad/.test(ua) ? 'macarm' : null;
-  if (id) { var el = document.getElementById(id); el.classList.add('rec'); el.querySelector('span').insertAdjacentHTML('beforeend', '<span class="badge">für dein Gerät</span>'); }
+  // Only Windows can be detected reliably; Mac chip type cannot, so both Mac cards stay equal.
+  var ua = navigator.userAgent;
+  if (/Windows/.test(ua)) {
+    var el = document.getElementById('win');
+    el.classList.add('rec');
+    el.insertAdjacentHTML('beforeend', '<span class="badge">für dein Gerät</span>');
+  }
 </script>
 </body>
 </html>

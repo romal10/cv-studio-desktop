@@ -24,7 +24,9 @@ Public download page for **CV Studio**. The application source code is **private
 Check your download against `SHA256SUMS.txt` on the release page.
 
 ### First launch — these builds are not signed yet
-- **Mac:** open the `.dmg`, drag *CV Studio* to Applications, then **right-click the app → Open → Open**. If macOS still blocks it: System Settings → Privacy & Security → *Open Anyway*.
+- **Mac (macOS 15 Sequoia and newer):** open the `.dmg`, drag *CV Studio* to Applications, open it once and click **Done** on the "not opened" warning (not "Move to Trash"). Then go to System Settings → Privacy & Security, scroll to *Security* and click **Open Anyway**, confirm with Touch ID or your password. Shortcut: `xattr -dr com.apple.quarantine "/Applications/CV Studio.app"`
+- **Mac (macOS 14 and older):** right-click the app → **Open** → **Open**.
+- Requires **macOS 11 (Big Sur) or newer**. On older macOS use CV Studio in the browser.
 - **Windows:** SmartScreen shows "Windows protected your PC" → **More info → Run anyway**.
 - The Apple Silicon build and the Windows installer have had limited testing. Please report problems via Issues.
 
