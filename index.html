@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV Studio Desktop — Download</title>
+<meta name="description" content="CV Studio für Mac und Windows herunterladen. Funktioniert offline, dein CV bleibt auf deinem Gerät.">
+<style>
+  :root { --bg:#070d22; --card:#0f1733; --ink:#f1f5ff; --soft:#9aa8cc; --line:#1f2b52; --acc:#4f6bff; --acc2:#7c3aed; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; margin: 8px 0 12px; }
+  .grad { background: linear-gradient(90deg,#60a5fa,#a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  p.lead { color: var(--soft); font-size: 1.1rem; margin: 0 0 28px; }
+  .btn { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; border-radius:16px; text-decoration:none; color:#fff; font-weight:700;
+         background: linear-gradient(90deg,var(--acc),var(--acc2)); margin: 10px 0; min-height: 56px; }
+  .btn small { font-weight:500; opacity:.85; }
+  .btn.alt { background: var(--card); border:1px solid var(--line); }
+  .rec { outline: 3px solid #fbbf24; outline-offset: 2px; }
+  .badge { font-size:.7rem; background:#fbbf24; color:#1b1400; padding:2px 8px; border-radius:999px; margin-left:8px; }
+  section { background: var(--card); border:1px solid var(--line); border-radius:20px; padding: 20px; margin-top: 28px; }
+  h2 { font-size: 1.1rem; margin: 0 0 8px; }
+  ol, ul { color: var(--soft); padding-left: 1.2rem; margin: 6px 0; }
+  code { background:#000a; padding:1px 6px; border-radius:6px; }
+  a { color:#93b4ff; }
+  footer { color: var(--soft); font-size:.85rem; margin-top: 32px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>CV Studio <span class="grad">für den Desktop</span></h1>
+  <p class="lead">Funktioniert auch ohne Internet. Dein CV bleibt auf deinem Gerät, bis du ihn online stellst.</p>
+
+  <a class="btn" id="win" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-Setup-0.1.0-windows.exe">
+    <span>Für Windows 10/11 herunterladen <small>· 64-Bit · 97 MB</small></span><span>⬇</span></a>
+  <a class="btn" id="macarm" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-0.1.0-mac-apple-silicon.dmg">
+    <span>Für Mac mit Apple-Chip (M1–M4) <small>· 112 MB</small></span><span>⬇</span></a>
+  <a class="btn alt" id="macintel" href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/CV-Studio-0.1.0-mac-intel.dmg">
+    <span>Für Mac mit Intel-Chip <small>· 117 MB</small></span><span>⬇</span></a>
+  <p style="color:var(--soft);font-size:.9rem;margin:4px 2px">Welcher Mac? Apple-Menü  → „Über diesen Mac“ → Zeile „Chip“.</p>
+
+  <section>
+    <h2>Beim ersten Start erscheint eine Sicherheitswarnung</h2>
+    <p style="color:var(--soft);margin:0 0 8px">Die App ist noch nicht von Microsoft/Apple signiert. Das ist normal für neue Apps:</p>
+    <ul>
+      <li><b>Windows:</b> „Weitere Informationen“ → <b>Trotzdem ausführen</b>.</li>
+      <li><b>Mac:</b> Rechtsklick auf die App → <b>Öffnen</b> → Öffnen. Falls blockiert: Systemeinstellungen → Datenschutz &amp; Sicherheit → <b>Trotzdem öffnen</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>iPad, iPhone, Android</h2>
+    <p style="color:var(--soft);margin:0">Öffne CV Studio im Browser und installiere es als App: iPad/iPhone in Safari über Teilen → <i>Zum Home-Bildschirm</i>, Android in Chrome über <i>App installieren</i>.</p>
+  </section>
+
+  <footer>
+    Version 0.1.0 (Vorabversion) · Prüfsummen: <a href="https://github.com/romal10/cv-studio-desktop/releases/download/v0.1.0/SHA256SUMS.txt">SHA256SUMS.txt</a> ·
+    <a href="https://github.com/romal10/cv-studio-desktop/releases/tag/v0.1.0">Alle Dateien</a> · MIT-Lizenz (Download-Seite)
+  </footer>
+</main>
+<script>
+  // Highlight the likely match; never hide the others (Mac chip type cannot be detected reliably).
+  var ua = navigator.userAgent, id = /Windows/.test(ua) ? 'win' : /Macintosh|Mac OS X/.test(ua) && !/iPhone|iPad/.test(ua) ? 'macarm' : null;
+  if (id) { var el = document.getElementById(id); el.classList.add('rec'); el.querySelector('span').insertAdjacentHTML('beforeend', '<span class="badge">für dein Gerät</span>'); }
+</script>
+</body>
+</html>
