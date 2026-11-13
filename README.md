@@ -13,7 +13,8 @@ Public download page for **CV Studio**. The application source code is **private
 
 | Device | File |
 |---|---|
-| **Mac** (Intel; runs on Apple Silicon via Rosetta) | `CV-Studio-0.1.0-mac.dmg` (or the `.zip`) |
+| **Mac, Apple chip** (M1 / M2 / M3 / M4) | `CV-Studio-0.1.0-mac-apple-silicon.dmg` |
+| **Mac, Intel chip** | `CV-Studio-0.1.0-mac-intel.dmg` |
 | **Windows 10/11, 64-bit** | `CV-Studio-Setup-0.1.0-windows.exe` |
 | **iPad / iPhone** | Open CV Studio in Safari → Share → *Add to Home Screen* |
 | **Android / other browsers** | Open CV Studio in Chrome or Edge → *Install app* |
@@ -23,7 +24,7 @@ Check your download against `SHA256SUMS.txt` on the release page.
 ### First launch — these builds are not signed yet
 - **Mac:** open the `.dmg`, drag *CV Studio* to Applications, then **right-click the app → Open → Open**. If macOS still blocks it: System Settings → Privacy & Security → *Open Anyway*.
 - **Windows:** SmartScreen shows "Windows protected your PC" → **More info → Run anyway**.
-- The Windows installer has not been tested on a wide range of PCs yet. Please report problems via Issues.
+- The Apple Silicon build and the Windows installer have had limited testing. Please report problems via Issues.
 
 ## Privacy
 Your CV is stored on your device unless you choose to put it online. The app reports to your administrator: device name, system, app version, local-AI status and basic activity (for example "app started", "CV put online"). It does not send your CV content for this.
