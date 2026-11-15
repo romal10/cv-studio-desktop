@@ -1,39 +1,33 @@
-# CV Studio — Desktop & installable app (download)
+# CV Studio Apps: downloads
 
-**Download page: https://romal10.github.io/cv-studio-desktop/**
+**Download site: https://romal10.github.io/cv-studio-desktop/**
 
-**All apps (desktop app + online version side by side): https://romal10.github.io/cv-studio-desktop/hub/**
+Public download pages for the **CV Studio** apps for Windows, Mac (Apple chip and Intel), iPhone, iPad and Android. The app source code is **private**; this repository only hosts the download pages, the licence of those pages and the release files.
 
-Public download page for **CV Studio**. The application source code is **private**; this repository only hosts the download information, the licence and release files.
-
-## What you get
-- **Works offline.** The desktop app opens without internet.
-- **Your CV stays on your device.** Choose *only on this device* or *online*. Putting it online (for share links and online features) and taking it back to local are one tap each, and the app always tells you where your CV lives.
-- **Local AI helper.** The app checks and sets up a local AI (Ollama) on your computer — no API key, text stays on the device.
-- **Managed installs.** Your organisation's administrator can see which devices have the app and can block access if something happens.
-
-## Download
-**Latest: [v0.1.0 (pre-release)](../../releases/tag/v0.1.0)**
-
-| Device | File |
+| App | Download page |
 |---|---|
-| **Mac, Apple chip** (M1 / M2 / M3 / M4) | `CV-Studio-0.1.0-mac-apple-silicon.dmg` |
-| **Mac, Intel chip** | `CV-Studio-0.1.0-mac-intel.dmg` |
-| **Windows 10/11, 64-bit** | `CV-Studio-Setup-0.1.0-windows.exe` |
-| **iPad / iPhone** | Open CV Studio in Safari → Share → *Add to Home Screen* |
-| **Android / other browsers** | Open CV Studio in Chrome or Edge → *Install app* |
+| CV Studio: Lebenslauf, Bewerbungen und Karriere | [romal10.github.io/cv-studio-desktop/apps/cv-studio/](https://romal10.github.io/cv-studio-desktop/apps/cv-studio/) |
+| Rabta: Chat, Anrufe und Meetings | [romal10.github.io/cv-studio-desktop/apps/rabta/](https://romal10.github.io/cv-studio-desktop/apps/rabta/) |
+| Kairos Kalender: Termine und Buchungen | [romal10.github.io/cv-studio-desktop/apps/kairos/](https://romal10.github.io/cv-studio-desktop/apps/kairos/) |
+| FRISO Salon: Salon-App für Friseure | [romal10.github.io/cv-studio-desktop/apps/friso/](https://romal10.github.io/cv-studio-desktop/apps/friso/) |
+| AROS Restaurant: Restaurant OS | [romal10.github.io/cv-studio-desktop/apps/aros/](https://romal10.github.io/cv-studio-desktop/apps/aros/) |
+| EVENTO Events: Veranstalter-App | [romal10.github.io/cv-studio-desktop/apps/evento/](https://romal10.github.io/cv-studio-desktop/apps/evento/) |
+| CV Studio Shop: Shop für Geschäftskunden | [romal10.github.io/cv-studio-desktop/apps/shop/](https://romal10.github.io/cv-studio-desktop/apps/shop/) |
+| CV Studio Berater: Portal für Karriereberater | [romal10.github.io/cv-studio-desktop/apps/consultant/](https://romal10.github.io/cv-studio-desktop/apps/consultant/) |
+| CV Studio Unternehmen: Portal für Unternehmen | [romal10.github.io/cv-studio-desktop/apps/company/](https://romal10.github.io/cv-studio-desktop/apps/company/) |
+| Steuer-Assistant | [romal10.github.io/steuer-assistant-download](https://romal10.github.io/steuer-assistant-download/) |
 
-Check your download against `SHA256SUMS.txt` on the release page.
+## Files
+Each app has its own release, tagged `<app>-v<version>` (for example `rabta-v0.2.0`), with a Windows installer, a Mac DMG for Apple Silicon, a Mac DMG for Intel and `SHA256SUMS.txt`. Check your download against the checksums on the release page.
 
-### First launch — these builds are not signed yet
-- **Mac (macOS 15 Sequoia and newer):** open the `.dmg`, drag *CV Studio* to Applications, open it once and click **Done** on the "not opened" warning (not "Move to Trash"). Then go to System Settings → Privacy & Security, scroll to *Security* and click **Open Anyway**, confirm with Touch ID or your password. Shortcut: `xattr -dr com.apple.quarantine "/Applications/CV Studio.app"`
-- **Mac (macOS 14 and older):** right-click the app → **Open** → **Open**.
-- Requires **macOS 11 (Big Sur) or newer**. On older macOS use CV Studio in the browser.
-- **Windows:** SmartScreen shows "Windows protected your PC" → **More info → Run anyway**.
-- The Apple Silicon build and the Windows installer have had limited testing. Please report problems via Issues.
+## First launch: the builds are not signed yet
+- **Mac (macOS 15 and newer):** open the app once, click *Done* on the warning, then System Settings → Privacy & Security → *Open Anyway*. Shortcut: `xattr -dr com.apple.quarantine "/Applications/<App>.app"`
+- **Mac (macOS 14 and older):** right-click the app → *Open* → *Open*.
+- **Windows:** SmartScreen shows "Windows protected your PC" → *More info* → *Run anyway*.
+- Requires macOS 11 or newer, Windows 10/11 (64-bit).
 
-## Privacy
-Your CV is stored on your device unless you choose to put it online. The app reports to your administrator: device name, system, app version, local-AI status and basic activity (for example "app started", "CV put online"). It does not send your CV content for this.
+## Phones and tablets
+Open the app in the browser and install it: iPhone/iPad in Safari via Share → *Add to Home Screen*, Android in Chrome via *Install app*.
 
-## Licence
-[MIT](LICENSE) — for the files in this repository.
+## Local AI
+On Windows and Mac the apps can set up a free local AI (Ollama) on request. It is not available on iPhone, iPad and Android.
