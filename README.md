@@ -27,7 +27,7 @@ Each app has its own release, tagged `<app>-v<version>` (for example `rabta-v0.2
 - Requires macOS 11 or newer, Windows 10/11 (64-bit).
 
 ## Phones and tablets
-Android: APKs of the Flutter apps (one per app, plus the CV Studio hub app). The open-source app shell is at [romal10/cv-studio-mobile](https://github.com/romal10/cv-studio-mobile). iPhone/iPad: open the app in the browser and install it: iPhone/iPad in Safari via Share → *Add to Home Screen*, Android in Chrome via *Install app*.
+Android: APKs of the Flutter apps (one per app, plus the CV Studio hub app). The open-source app shell is at [romal10/cv-studio-desktop/mobile](https://github.com/romal10/cv-studio-desktop/tree/main/mobile). iPhone/iPad: open the app in the browser and install it: iPhone/iPad in Safari via Share → *Add to Home Screen*, Android in Chrome via *Install app*.
 
 ## Local AI
 On Windows and Mac the apps can set up a free local AI (Ollama) on request. It is not available on iPhone, iPad and Android.
