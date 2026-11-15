@@ -178,7 +178,7 @@ const jf=$('#joinForm');if(jf)jf.onsubmit=e=>{e.preventDefault();const t=joinTar
 const hf=$('#handleForm');if(hf)hf.onsubmit=e=>{e.preventDefault();const h=$('#handleIn').value.trim().replace(/^@/,'').replace(/[^A-Za-z0-9_.-]/g,'');if(h&&url(APP.handlePath+h))location.href=url(APP.handlePath+h)};
 text();
 // The ONE shared address file of the hub (../address.json, kept current by publish-address.sh) wins; config.json is the fallback.
-fetch('../address.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(a=>fetch('config.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({})).then(c=>{cfg={...cfg,...c};if(a&&/^https:///.test(a.address||'')&&!cfg.domain)cfg.tunnel=a.address;wire()}));
+fetch('../address.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(a=>fetch('config.json',{cache:'no-store'}).then(r=>r.json()).catch(()=>({})).then(c=>{cfg={...cfg,...c};if(a&&String(a.address||'').indexOf('https:')===0&&!cfg.domain)cfg.tunnel=a.address;wire()}));
 </script>
 </body>
 </html>
